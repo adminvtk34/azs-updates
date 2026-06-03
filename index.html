@@ -2,47 +2,247 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>AZS Updates Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AZS Mail Robot — Сервер обновлений</title>
     <style>
-        body { font-family: Arial; max-width: 800px; margin: 50px auto; padding: 20px; }
-        .status { background: #4CAF50; color: white; padding: 20px; border-radius: 10px; }
-        .info { background: #f0f0f0; padding: 20px; margin: 20px 0; border-radius: 10px; }
-        code { background: #333; color: #0f0; padding: 2px 5px; border-radius: 3px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #f5f5f5; 
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .header h1 { font-size: 28px; margin-bottom: 10px; }
+        .header p { opacity: 0.9; font-size: 14px; }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .card h2 { 
+            border-bottom: 2px solid #667eea; 
+            padding-bottom: 10px; 
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .status-online { background: #4CAF50; color: white; }
+        .version { font-size: 32px; font-weight: bold; color: #667eea; }
+        
+        .link-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .link-box code {
+            background: #2d2d2d;
+            color: #0f0;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 13px;
+            word-break: break-all;
+        }
+        
+        .version-list {
+            list-style: none;
+        }
+        .version-list li {
+            padding: 15px;
+            border-left: 3px solid #667eea;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 0 5px 5px 0;
+        }
+        .version-list .ver-number {
+            font-size: 20px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .version-list .ver-date {
+            color: #888;
+            font-size: 13px;
+            margin-left: 10px;
+        }
+        .version-list .ver-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            margin-left: 5px;
+        }
+        .tag-current { background: #4CAF50; color: white; }
+        .tag-old { background: #999; color: white; }
+        
+        .changes-list {
+            margin: 10px 0 0 20px;
+            color: #555;
+        }
+        .changes-list li { 
+            padding: 3px 0; 
+            border: none; 
+            margin: 0; 
+            background: none; 
+        }
+        
+        .footer {
+            text-align: center;
+            color: #999;
+            padding: 20px;
+            font-size: 12px;
+        }
+        
+        .emoji { font-size: 24px; }
     </style>
 </head>
 <body>
-    <h1>🔄 AZS Mail Robot - Сервер обновлений</h1>
-    
-    <div class="status">
-        <h2>✅ Сервер работает</h2>
-        <p>Последняя версия: <strong id="version">загрузка...</strong></p>
-        <p>Дата выпуска: <strong id="date">загрузка...</strong></p>
+
+    <div class="header">
+        <h1><span class="emoji">🔄</span> AZS Mail Robot</h1>
+        <p>Сервер обновлений и мониторинга</p>
     </div>
-    
-    <div class="info">
-        <h3>📋 Изменения в последней версии:</h3>
-        <ul id="changes"></ul>
+
+    <!-- Статус -->
+    <div class="card">
+        <h2>📊 Текущий статус</h2>
+        <p>
+            <span class="status-badge status-online">✅ Сервер работает</span>
+        </p>
+        <p style="margin-top: 15px;">
+            Последняя версия: <span class="version" id="version">---</span>
+        </p>
+        <p style="color: #888;">
+            Дата выпуска: <strong id="date">---</strong>
+        </p>
     </div>
-    
-    <div class="info">
-        <h3>📥 Прямые ссылки для роботов:</h3>
-        <p>Файл версий: <code>/azs-updates/versions.json</code></p>
-        <p>Скрипт v3.0: <code>/azs-updates/robot_core_v3.0.ps1</code></p>
+
+    <!-- Ссылки -->
+    <div class="card">
+        <h2>📥 Прямые ссылки для роботов</h2>
+        <div class="link-box">
+            <strong>Файл версий:</strong><br>
+            <code>https://adminvtk34.github.io/azs-updates/versions.json</code>
+        </div>
+        <div class="link-box">
+            <strong>Скрипт v3.0:</strong><br>
+            <code>https://adminvtk34.github.io/azs-updates/robot_core_v3.0.ps1</code>
+        </div>
+        <div class="link-box">
+            <strong>История версий:</strong><br>
+            <code>https://adminvtk34.github.io/azs-updates/changelog.md</code>
+        </div>
+    </div>
+
+    <!-- Последние изменения -->
+    <div class="card">
+        <h2>📋 Что нового в последней версии</h2>
+        <ul class="changes-list" id="latestChanges">
+            <li>Загрузка...</li>
+        </ul>
+    </div>
+
+    <!-- История версий -->
+    <div class="card">
+        <h2>📝 История версий</h2>
+        <ul class="version-list" id="versionHistory">
+            <li>Загрузка...</li>
+        </ul>
+    </div>
+
+    <div class="footer">
+        <p>AZS Mail Robot v3.0 | © 2024</p>
+        <p>Сервер обновлений работает 24/7</p>
     </div>
 
     <script>
+        // Загружаем данные из versions.json
         fetch('versions.json')
             .then(r => r.json())
             .then(data => {
+                // Текущая версия
                 document.getElementById('version').textContent = 'v' + data.latest_version;
                 document.getElementById('date').textContent = data.release_date;
-                let ul = document.getElementById('changes');
-                data.changes.forEach(c => {
+                
+                // Последние изменения
+                let latestUl = document.getElementById('latestChanges');
+                latestUl.innerHTML = '';
+                if (data.changes && data.changes.length > 0) {
+                    data.changes.forEach(c => {
+                        let li = document.createElement('li');
+                        li.textContent = c;
+                        latestUl.appendChild(li);
+                    });
+                } else {
+                    latestUl.innerHTML = '<li>Нет данных</li>';
+                }
+                
+                // История версий
+                let historyUl = document.getElementById('versionHistory');
+                historyUl.innerHTML = '';
+                
+                if (data.history && data.history.length > 0) {
+                    data.history.forEach(ver => {
+                        let li = document.createElement('li');
+                        
+                        let isCurrent = ver.version === data.latest_version;
+                        let tagClass = isCurrent ? 'tag-current' : 'tag-old';
+                        let tagText = isCurrent ? 'Текущая' : '';
+                        
+                        li.innerHTML = `
+                            <span class="ver-number">v${ver.version}</span>
+                            <span class="ver-date">${ver.date}</span>
+                            ${tagText ? `<span class="ver-tag ${tagClass}">${tagText}</span>` : ''}
+                            <ul class="changes-list">
+                                ${ver.changes.map(c => `<li>${c}</li>`).join('')}
+                            </ul>
+                        `;
+                        
+                        historyUl.appendChild(li);
+                    });
+                } else {
+                    // Показываем только текущую версию
                     let li = document.createElement('li');
-                    li.textContent = c;
-                    ul.appendChild(li);
-                });
+                    li.innerHTML = `
+                        <span class="ver-number">v${data.latest_version}</span>
+                        <span class="ver-date">${data.release_date}</span>
+                        <span class="ver-tag tag-current">Текущая</span>
+                        <ul class="changes-list">
+                            ${data.changes.map(c => `<li>${c}</li>`).join('')}
+                        </ul>
+                    `;
+                    historyUl.appendChild(li);
+                }
+            })
+            .catch(err => {
+                document.getElementById('version').textContent = 'Ошибка';
+                document.getElementById('date').textContent = 'Недоступно';
+                document.getElementById('latestChanges').innerHTML = '<li>Не удалось загрузить данные</li>';
+                document.getElementById('versionHistory').innerHTML = '<li>Не удалось загрузить историю</li>';
+                console.error('Error:', err);
             });
     </script>
+
+</body>
+</html>
 </body>
 </html>
