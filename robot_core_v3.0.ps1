@@ -185,12 +185,24 @@ while ($true) {
                 
                 $fileItem = Get-Item $filePath
                 
-                if ($fileItem.Name -notlike "AZS_${AzsNameEn}*.xml") {
-                    $dateStr = (Get-Date).ToString("yyyyMMddHHmmss")
-                    $newName = "AZS_${AzsNameEn}$dateStr.xml"
-                    $finalPath = Join-Path $WatchFolder $newName
-                    Rename-Item -Path $filePath -NewName $newName -Force
-                }
+            if ($fileItem.Name -notlike "AZS_${AzsNameEn}*.xml") {
+    # Извлекаем дату из оригинального имени файла
+    # Было: SesDataExport_26.05.30_08-46-01.xml
+    # Стало: AZS_Gumrak_26.05.30_08-46-01.xml
+    
+    if ($fileItem.BaseName -match "SesDataExport_(.+)$") {
+        $dateTimeString = $Matches[1]  # "26.05.30_08-46-01"
+    }
+    else {
+        # Если не можем извлечь - используем текущую дату
+        $dateTimeString = (Get-Date).ToString("yy.MM.dd_HH-mm-ss")
+    }
+    
+    $newName = "AZS_${AzsNameEn}_$dateTimeString.xml"
+    $finalPath = Join-Path $WatchFolder $newName
+    Rename-Item -Path $filePath -NewName $newName -Force
+    Write-Log "RENAME: $($fileItem.Name) -> $newName"
+}
                 else {
                     $finalPath = $filePath
                 }
