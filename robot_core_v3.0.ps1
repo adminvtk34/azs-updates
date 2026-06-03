@@ -1,8 +1,6 @@
 # ============================================
 # AZS_Mail_Robot_v3.0.ps1 - CORE SCRIPT
-# ============================================
 # Версия: 3.0
-# Описание: Мониторинг, отправка отчетов, автообновление
 # ============================================
 
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
@@ -21,7 +19,6 @@ catch {
     exit 1
 }
 
-# Настройки
 $WatchFolder    = $Config.watch_folder
 $ArchiveFolder  = "$ScriptDir\Отчеты"
 $LogDirectory   = "$ScriptDir\Logs"
@@ -44,21 +41,18 @@ $Password    = $Config.password
 $UpdateServer = $Config.update_server
 $CurrentVersion = $Config.current_version
 
-# Создаём папки
 if (-not (Test-Path $LogDirectory)) { New-Item -Path $LogDirectory -ItemType Directory -Force | Out-Null }
 if (-not (Test-Path $ArchiveFolder)) { New-Item -Path $ArchiveFolder -ItemType Directory -Force | Out-Null }
 
-# Функция логирования
 function Write-Log([string]$Message) {
     $CurrentDate = Get-Date -Format "yyyy-MM-dd"
     $DailyLogFile = "$LogDirectory\log_$CurrentDate.txt"
     $TimeStamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
     $LogLine = "[$TimeStamp] $Message"
-    Out-File -InputObject $LogLine -FilePath $DailyLogFile -Append -Encoding UTF8
+    Add-Content -Path $DailyLogFile -Value $LogLine -Encoding UTF8
     Write-Host $LogLine
 }
 
-# Проверка блокировки файла
 function Test-FileLocked([string]$FilePath) {
     try {
         $file = [System.IO.File]::Open($FilePath, 'Open', 'Read', 'None')
@@ -68,7 +62,6 @@ function Test-FileLocked([string]$FilePath) {
     catch { return $true }
 }
 
-# Ожидание разблокировки
 function Wait-FileReady([string]$FilePath, [int]$TimeoutSeconds = 60) {
     $elapsed = 0
     while ((Test-FileLocked $FilePath) -and ($elapsed -lt $TimeoutSeconds)) {
@@ -78,7 +71,6 @@ function Wait-FileReady([string]$FilePath, [int]$TimeoutSeconds = 60) {
     return -not (Test-FileLocked $FilePath)
 }
 
-# Проверка рабочего времени
 function Test-WorkTime {
     $now = Get-Date
     $ws = [DateTime]::ParseExact($WorkStartTime, "HH:mm", $null)
@@ -86,15 +78,13 @@ function Test-WorkTime {
     return ($now.TimeOfDay -ge $ws.TimeOfDay) -and ($now.TimeOfDay -le $we.TimeOfDay)
 }
 
-# Очистка старых файлов
 function Remove-OldFiles {
     $old = Get-ChildItem $ArchiveFolder -Filter "AZS_*.xml" -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-30) }
-    if ($old) { $old | Remove-Item -Force; Write-Log "CLEANUP: Removed old files" }
+    if ($old) { $old | Remove-Item -Force }
     $old = Get-ChildItem $LogDirectory -Filter "log_*.txt" -ErrorAction SilentlyContinue | Where-Object { $_.LastWriteTime -lt (Get-Date).AddDays(-30) }
     if ($old) { $old | Remove-Item -Force }
 }
 
-# Отправка файла
 function Send-File([string]$FilePath) {
     $Attachment = $null
     $MailMessage = $null
@@ -108,8 +98,9 @@ function Send-File([string]$FilePath) {
         $MailMessage.From = $SenderEmail
         $MailMessage.To.Add($TargetEmail)
         $MailMessage.Subject = $Subject
-        $MailMessage.Body = "Автоматический отчет."
+        $MailMessage.Body = "Автоматический отчет во вложении."
         $MailMessage.BodyEncoding = [System.Text.Encoding]::UTF8
+        $MailMessage.SubjectEncoding = [System.Text.Encoding]::UTF8
         
         $Attachment = New-Object System.Net.Mail.Attachment($FilePath)
         $Attachment.Name = $fileName
@@ -135,9 +126,6 @@ function Send-File([string]$FilePath) {
 }
 
 # ============================================
-# ОСНОВНОЙ ЦИКЛ
-# ============================================
-
 Write-Log "===================================================="
 Write-Log "AZS MAIL ROBOT v$CurrentVersion STARTED"
 Write-Log "AZS: $AzsNameRu ($AzsNameEn)"
@@ -169,7 +157,6 @@ while ($true) {
     
     if (Test-Path $PendingFile) {
         Get-Content $PendingFile -ErrorAction SilentlyContinue | Where-Object { $_ -and (Test-Path $_) } | ForEach-Object { $allFiles += $_ }
-        if ($allFiles.Count -eq 0) { Remove-Item $PendingFile -Force }
     }
     
     Get-ChildItem $WatchFolder -ErrorAction SilentlyContinue | Where-Object { $_.Name -like "SesDataExport*.xml" } | ForEach-Object { $allFiles += $_.FullName }
@@ -180,29 +167,27 @@ while ($true) {
         foreach ($filePath in $allFiles) {
             try {
                 if (Test-FileLocked $filePath) {
-                    if (-not (Wait-FileReady $filePath)) { $pendingList += $filePath; continue }
+                    if (-not (Wait-FileReady $filePath)) { 
+                        $pendingList += $filePath
+                        continue 
+                    }
                 }
                 
                 $fileItem = Get-Item $filePath
                 
-            if ($fileItem.Name -notlike "AZS_${AzsNameEn}*.xml") {
-    # Извлекаем дату из оригинального имени файла
-    # Было: SesDataExport_26.05.30_08-46-01.xml
-    # Стало: AZS_Gumrak_26.05.30_08-46-01.xml
-    
-    if ($fileItem.BaseName -match "SesDataExport_(.+)$") {
-        $dateTimeString = $Matches[1]  # "26.05.30_08-46-01"
-    }
-    else {
-        # Если не можем извлечь - используем текущую дату
-        $dateTimeString = (Get-Date).ToString("yy.MM.dd_HH-mm-ss")
-    }
-    
-    $newName = "AZS_${AzsNameEn}_$dateTimeString.xml"
-    $finalPath = Join-Path $WatchFolder $newName
-    Rename-Item -Path $filePath -NewName $newName -Force
-    Write-Log "RENAME: $($fileItem.Name) -> $newName"
-}
+                if ($fileItem.Name -notlike "AZS_${AzsNameEn}_*.xml") {
+                    if ($fileItem.BaseName -match "SesDataExport_(.+)$") {
+                        $dateTimeString = $Matches[1]
+                    }
+                    else {
+                        $dateTimeString = (Get-Date).ToString("yy.MM.dd_HH-mm-ss")
+                    }
+                    
+                    $newName = "AZS_${AzsNameEn}_$dateTimeString.xml"
+                    $finalPath = Join-Path $WatchFolder $newName
+                    Rename-Item -Path $filePath -NewName $newName -Force
+                    Write-Log "RENAME: $($fileItem.Name) -> $newName"
+                }
                 else {
                     $finalPath = $filePath
                 }
@@ -226,8 +211,12 @@ while ($true) {
             $pendingList | Sort-Object -Unique | Out-File $PendingFile -Encoding UTF8
             $checkInterval = 5
         }
+        else {
+            if (Test-Path $PendingFile) { Remove-Item $PendingFile -Force }
+        }
     }
     
     [System.GC]::Collect()
     Start-Sleep -Seconds $checkInterval
 }
+   
