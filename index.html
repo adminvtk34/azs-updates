@@ -1,11 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>AZS Updates</title>
+    <title>AZS Updates Server</title>
+    <style>
+        body { font-family: Arial; max-width: 800px; margin: 50px auto; padding: 20px; }
+        .status { background: #4CAF50; color: white; padding: 20px; border-radius: 10px; }
+        .info { background: #f0f0f0; padding: 20px; margin: 20px 0; border-radius: 10px; }
+        code { background: #333; color: #0f0; padding: 2px 5px; border-radius: 3px; }
+    </style>
 </head>
 <body>
-    <h1>AZS Mail Robot - Сервер обновлений</h1>
-    <p>Сервер работает!</p>
+    <h1>🔄 AZS Mail Robot - Сервер обновлений</h1>
+    
+    <div class="status">
+        <h2>✅ Сервер работает</h2>
+        <p>Последняя версия: <strong id="version">загрузка...</strong></p>
+        <p>Дата выпуска: <strong id="date">загрузка...</strong></p>
+    </div>
+    
+    <div class="info">
+        <h3>📋 Изменения в последней версии:</h3>
+        <ul id="changes"></ul>
+    </div>
+    
+    <div class="info">
+        <h3>📥 Прямые ссылки для роботов:</h3>
+        <p>Файл версий: <code>/azs-updates/versions.json</code></p>
+        <p>Скрипт v3.0: <code>/azs-updates/robot_core_v3.0.ps1</code></p>
+    </div>
+
+    <script>
+        fetch('versions.json')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('version').textContent = 'v' + data.latest_version;
+                document.getElementById('date').textContent = data.release_date;
+                let ul = document.getElementById('changes');
+                data.changes.forEach(c => {
+                    let li = document.createElement('li');
+                    li.textContent = c;
+                    ul.appendChild(li);
+                });
+            });
+    </script>
 </body>
 </html>
