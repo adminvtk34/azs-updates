@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -22,7 +23,6 @@
             text-align: center;
         }
         .header h1 { font-size: 28px; margin-bottom: 10px; }
-        .header p { opacity: 0.9; font-size: 14px; }
         
         .card {
             background: white;
@@ -35,7 +35,6 @@
             border-bottom: 2px solid #667eea; 
             padding-bottom: 10px; 
             margin-bottom: 15px;
-            color: #333;
         }
         
         .status-badge {
@@ -43,9 +42,8 @@
             padding: 5px 15px;
             border-radius: 20px;
             font-weight: bold;
-            font-size: 14px;
+            background: #4CAF50; color: white;
         }
-        .status-online { background: #4CAF50; color: white; }
         .version { font-size: 32px; font-weight: bold; color: #667eea; }
         
         .link-box {
@@ -64,9 +62,7 @@
             word-break: break-all;
         }
         
-        .version-list {
-            list-style: none;
-        }
+        .version-list { list-style: none; }
         .version-list li {
             padding: 15px;
             border-left: 3px solid #667eea;
@@ -74,17 +70,9 @@
             background: #f8f9fa;
             border-radius: 0 5px 5px 0;
         }
-        .version-list .ver-number {
-            font-size: 20px;
-            font-weight: bold;
-            color: #667eea;
-        }
-        .version-list .ver-date {
-            color: #888;
-            font-size: 13px;
-            margin-left: 10px;
-        }
-        .version-list .ver-tag {
+        .ver-number { font-size: 20px; font-weight: bold; color: #667eea; }
+        .ver-date { color: #888; font-size: 13px; margin-left: 10px; }
+        .ver-tag {
             display: inline-block;
             padding: 2px 8px;
             border-radius: 10px;
@@ -94,40 +82,23 @@
         .tag-current { background: #4CAF50; color: white; }
         .tag-old { background: #999; color: white; }
         
-        .changes-list {
-            margin: 10px 0 0 20px;
-            color: #555;
-        }
-        .changes-list li { 
-            padding: 3px 0; 
-            border: none; 
-            margin: 0; 
-            background: none; 
-        }
+        .changes-list { margin: 10px 0 0 20px; color: #555; }
+        .changes-list li { padding: 3px 0; border: none; margin: 0; background: none; }
         
-        .footer {
-            text-align: center;
-            color: #999;
-            padding: 20px;
-            font-size: 12px;
-        }
-        
-        .emoji { font-size: 24px; }
+        .footer { text-align: center; color: #999; padding: 20px; font-size: 12px; }
     </style>
 </head>
 <body>
 
     <div class="header">
-        <h1><span class="emoji">🔄</span> AZS Mail Robot</h1>
+        <h1>🔄 AZS Mail Robot</h1>
         <p>Сервер обновлений и мониторинга</p>
     </div>
 
     <!-- Статус -->
     <div class="card">
         <h2>📊 Текущий статус</h2>
-        <p>
-            <span class="status-badge status-online">✅ Сервер работает</span>
-        </p>
+        <p><span class="status-badge">✅ Сервер работает</span></p>
         <p style="margin-top: 15px;">
             Последняя версия: <span class="version" id="version">---</span>
         </p>
@@ -144,8 +115,8 @@
             <code>https://adminvtk34.github.io/azs-updates/versions.json</code>
         </div>
         <div class="link-box">
-            <strong>Скрипт v3.0:</strong><br>
-            <code>https://adminvtk34.github.io/azs-updates/robot_core_v3.0.ps1</code>
+            <strong>Скрипт v3.1:</strong><br>
+            <code>https://adminvtk34.github.io/azs-updates/robot_core_v3.1.ps1</code>
         </div>
         <div class="link-box">
             <strong>История версий:</strong><br>
@@ -155,94 +126,62 @@
 
     <!-- Последние изменения -->
     <div class="card">
-        <h2>📋 Что нового в последней версии</h2>
-        <ul class="changes-list" id="latestChanges">
-            <li>Загрузка...</li>
+        <h2>📋 Что нового в v3.1</h2>
+        <ul class="changes-list">
+            <li>✅ Автообновление каждую ночь в 3:00</li>
+            <li>✅ Backup скрипта перед обновлением</li>
+            <li>✅ Сохранение оригинальной даты из имени файла</li>
+            <li>✅ Исправлена кодировка логов (UTF-8)</li>
         </ul>
     </div>
 
     <!-- История версий -->
     <div class="card">
         <h2>📝 История версий</h2>
-        <ul class="version-list" id="versionHistory">
-            <li>Загрузка...</li>
+        <ul class="version-list">
+            <li>
+                <span class="ver-number">v3.1</span>
+                <span class="ver-date">03.06.2026</span>
+                <span class="ver-tag tag-current">Текущая</span>
+                <ul class="changes-list">
+                    <li>Автообновление с GitHub</li>
+                    <li>Backup перед обновлением</li>
+                    <li>Сохранение даты файла</li>
+                </ul>
+            </li>
+            <li>
+                <span class="ver-number">v3.0</span>
+                <span class="ver-date">03.06.2026</span>
+                <ul class="changes-list">
+                    <li>Настройки в config_azs.json</li>
+                    <li>UTF-8 логирование</li>
+                    <li>Отправка почты через Reg.ru</li>
+                </ul>
+            </li>
+            <li>
+                <span class="ver-number">v2.0</span>
+                <span class="ver-date">15.05.2026</span>
+                <ul class="changes-list">
+                    <li>3 режима работы (активный/пассивный/экстренный)</li>
+                    <li>Защита после перезагрузки</li>
+                    <li>Обработка нескольких файлов</li>
+                </ul>
+            </li>
+            <li>
+                <span class="ver-number">v1.0</span>
+                <span class="ver-date">01.05.2026</span>
+                <ul class="changes-list">
+                    <li>Базовая отправка отчетов</li>
+                    <li>Persistent queue</li>
+                    <li>Логирование</li>
+                </ul>
+            </li>
         </ul>
     </div>
 
     <div class="footer">
-        <p>AZS Mail Robot v3.0 | © 2024</p>
-        <p>Сервер обновлений работает 24/7</p>
+        <p>AZS Mail Robot v3.1 | © 2026</p>
     </div>
 
-    <script>
-        // Загружаем данные из versions.json
-        fetch('versions.json')
-            .then(r => r.json())
-            .then(data => {
-                // Текущая версия
-                document.getElementById('version').textContent = 'v' + data.latest_version;
-                document.getElementById('date').textContent = data.release_date;
-                
-                // Последние изменения
-                let latestUl = document.getElementById('latestChanges');
-                latestUl.innerHTML = '';
-                if (data.changes && data.changes.length > 0) {
-                    data.changes.forEach(c => {
-                        let li = document.createElement('li');
-                        li.textContent = c;
-                        latestUl.appendChild(li);
-                    });
-                } else {
-                    latestUl.innerHTML = '<li>Нет данных</li>';
-                }
-                
-                // История версий
-                let historyUl = document.getElementById('versionHistory');
-                historyUl.innerHTML = '';
-                
-                if (data.history && data.history.length > 0) {
-                    data.history.forEach(ver => {
-                        let li = document.createElement('li');
-                        
-                        let isCurrent = ver.version === data.latest_version;
-                        let tagClass = isCurrent ? 'tag-current' : 'tag-old';
-                        let tagText = isCurrent ? 'Текущая' : '';
-                        
-                        li.innerHTML = `
-                            <span class="ver-number">v${ver.version}</span>
-                            <span class="ver-date">${ver.date}</span>
-                            ${tagText ? `<span class="ver-tag ${tagClass}">${tagText}</span>` : ''}
-                            <ul class="changes-list">
-                                ${ver.changes.map(c => `<li>${c}</li>`).join('')}
-                            </ul>
-                        `;
-                        
-                        historyUl.appendChild(li);
-                    });
-                } else {
-                    // Показываем только текущую версию
-                    let li = document.createElement('li');
-                    li.innerHTML = `
-                        <span class="ver-number">v${data.latest_version}</span>
-                        <span class="ver-date">${data.release_date}</span>
-                        <span class="ver-tag tag-current">Текущая</span>
-                        <ul class="changes-list">
-                            ${data.changes.map(c => `<li>${c}</li>`).join('')}
-                        </ul>
-                    `;
-                    historyUl.appendChild(li);
-                }
-            })
-            .catch(err => {
-                document.getElementById('version').textContent = 'Ошибка';
-                document.getElementById('date').textContent = 'Недоступно';
-                document.getElementById('latestChanges').innerHTML = '<li>Не удалось загрузить данные</li>';
-                document.getElementById('versionHistory').innerHTML = '<li>Не удалось загрузить историю</li>';
-                console.error('Error:', err);
-            });
-    </script>
-
-</body>
-</html>
 </body>
 </html>
