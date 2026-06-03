@@ -57,7 +57,7 @@
         "core_script": {
             "filename": "robot_core_v3.1.ps1",
             "url": "https://adminvtk34.github.io/azs-updates/robot_core_v3.1.ps1",
-            "checksum_sha256": "ВСТАВЬ_НОВЫЙ_ХЕШ",
+            "checksum_sha256": "507F90BF46BC4788DF306C21F96CD81A078D6A4AE24A69BD6FBAB7471DEFC4B6",
             "size_kb": 0
         }
     }
