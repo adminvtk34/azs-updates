@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -130,6 +129,7 @@
         <ul class="changes-list">
             <li>✅ Автообновление каждую ночь в 3:00</li>
             <li>✅ Backup скрипта перед обновлением</li>
+            <li>✅ Уведомление на почту при обновлении</li>
             <li>✅ Сохранение оригинальной даты из имени файла</li>
             <li>✅ Исправлена кодировка логов (UTF-8)</li>
         </ul>
@@ -141,11 +141,11 @@
         <ul class="version-list">
             <li>
                 <span class="ver-number">v3.1</span>
-                <span class="ver-date">03.06.2026</span>
+                <span class="ver-date">04.06.2026</span>
                 <span class="ver-tag tag-current">Текущая</span>
                 <ul class="changes-list">
-                    <li>Автообновление с GitHub</li>
-                    <li>Backup перед обновлением</li>
+                    <li>Автообновление с уведомлением</li>
+                    <li>Backup с версией в имени</li>
                     <li>Сохранение даты файла</li>
                 </ul>
             </li>
@@ -162,7 +162,7 @@
                 <span class="ver-number">v2.0</span>
                 <span class="ver-date">15.05.2026</span>
                 <ul class="changes-list">
-                    <li>3 режима работы (активный/пассивный/экстренный)</li>
+                    <li>3 режима работы</li>
                     <li>Защита после перезагрузки</li>
                     <li>Обработка нескольких файлов</li>
                 </ul>
@@ -182,6 +182,20 @@
     <div class="footer">
         <p>AZS Mail Robot v3.1 | © 2026</p>
     </div>
+
+    <!-- Загрузка данных из versions.json -->
+    <script>
+        fetch('https://adminvtk34.github.io/azs-updates/versions.json')
+            .then(r => r.json())
+            .then(data => {
+                document.getElementById('version').textContent = 'v' + data.latest_version;
+                document.getElementById('date').textContent = data.release_date;
+            })
+            .catch(err => {
+                document.getElementById('version').textContent = 'Ошибка';
+                document.getElementById('date').textContent = 'Недоступно';
+            });
+    </script>
 
 </body>
 </html>
