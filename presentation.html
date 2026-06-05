@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASP34 SOFT — Презентация системы</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #f5f5f5; 
+        }
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 50px 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .hero h1 { font-size: 36px; margin-bottom: 10px; }
+        .hero .subtitle { font-size: 18px; opacity: 0.9; }
+        .hero .company { font-size: 14px; opacity: 0.7; margin-top: 15px; }
+        
+        .section {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .section h2 { 
+            color: #1a1a2e; 
+            border-bottom: 3px solid #667eea; 
+            padding-bottom: 10px; 
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .section h3 { color: #667eea; margin: 20px 0 10px; }
+        
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .feature-card .icon { font-size: 30px; margin-bottom: 10px; }
+        .feature-card h4 { color: #1a1a2e; margin-bottom: 5px; }
+        .feature-card p { color: #666; font-size: 14px; }
+        
+        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background: #667eea; color: white; }
+        tr:nth-child(even) { background: #f8f9fa; }
+        
+        .highlight { 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .highlight .big { font-size: 36px; font-weight: bold; }
+        
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 2px;
+        }
+        .badge-green { background: #4CAF50; color: white; }
+        .badge-blue { background: #2196F3; color: white; }
+        .badge-orange { background: #FF9800; color: white; }
+        
+        .flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+            background: #f0f0f0;
+            border-radius: 10px;
+        }
+        .flow-box {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .flow-arrow { font-size: 24px; color: #667eea; }
+        
+        .footer { 
+            text-align: center; 
+            color: #999; 
+            padding: 30px; 
+            font-size: 14px;
+            border-top: 1px solid #ddd;
+            margin-top: 30px;
+        }
+        
+        @media print {
+            body { background: white; }
+            .section { box-shadow: none; break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>🛢️ ASP34 Report System v2.0</h1>
+        <p class="subtitle">Автоматическая система управления отчётами АЗС</p>
+        <p class="company">(c) ASP34 SOFT 2026</p>
+    </div>
+
+    <!-- Что это -->
+    <div class="section">
+        <h2>🎯 О продукте</h2>
+        <p>ASP34 Report System — это готовое решение для автоматизации сбора и обработки ежедневных XML-отчётов с автозаправочных станций.</p>
+        <br>
+        <div class="features">
+            <div class="feature-card">
+                <div class="icon">🤖</div>
+                <h4>Полный автомат</h4>
+                <p>Система работает 24/7 без участия человека</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">📧</div>
+                <h4>Отчёт на почту</h4>
+                <p>Ежедневная сводка: кто прислал, кто нет</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🔄</div>
+                <h4>Самообновление</h4>
+                <p>Роботы обновляются сами ночью</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">⚡</div>
+                <h4>5 минут на установку</h4>
+                <p>Не нужен специалист</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Как работает -->
+    <div class="section">
+        <h2>🔄 Как это работает</h2>
+        
+        <h3>Утро на АЗС:</h3>
+        <div class="flow">
+            <div class="flow-box">🏪 TopazAZS</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">📄 XML файл</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">🤖 Робот</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">📧 Почта</div>
+        </div>
+        
+        <h3>На сервере:</h3>
+        <div class="flow">
+            <div class="flow-box">📧 Почта</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">📥 Загрузчик</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">📁 Папки АЗС</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-box">📊 Сводка</div>
+        </div>
+    </div>
+
+    <!-- Преимущества -->
+    <div class="section">
+        <h2>📊 Преимущества</h2>
+        <table>
+            <tr>
+                <th>Критерий</th>
+                <th>Без системы</th>
+                <th>С ASP34</th>
+            </tr>
+            <tr>
+                <td>Участие оператора</td>
+                <td>❌ Обязательно</td>
+                <td>✅ Не требуется</td>
+            </tr>
+            <tr>
+                <td>Время на отправку</td>
+                <td>10-15 мин/день</td>
+                <td>0 минут</td>
+            </tr>
+            <tr>
+                <td>Пропуск отчёта</td>
+                <td>Возможен</td>
+                <td>Исключён</td>
+            </tr>
+            <tr>
+                <td>Установка на АЗС</td>
+                <td>Часы</td>
+                <td>5 минут</td>
+            </tr>
+            <tr>
+                <td>Обновление всех АЗС</td>
+                <td>Выезд (1-2 дня)</td>
+                <td>Автоматически (ночь)</td>
+            </tr>
+            <tr>
+                <td>Контроль отправки</td>
+                <td>Отсутствует</td>
+                <td>Логи + сводка</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Цифры -->
+    <div class="highlight">
+        <p>Экономия для сети из 10 АЗС:</p>
+        <p class="big">50 часов/мес</p>
+        <p>Окупаемость: 1-2 месяца</p>
+    </div>
+
+    <!-- Состав -->
+    <div class="section">
+        <h2>📦 Состав системы</h2>
+        <table>
+            <tr>
+                <th>Компонент</th>
+                <th>Где устанавливается</th>
+                <th>Файлы</th>
+            </tr>
+            <tr>
+                <td><span class="badge badge-blue">Robot</span> Отправка отчётов</td>
+                <td>Каждая АЗС</td>
+                <td>3 файла</td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-green">Downloader</span> Сбор и сводка</td>
+                <td>Сервер</td>
+                <td>3 файла</td>
+            </tr>
+            <tr>
+                <td><span class="badge badge-orange">Update Server</span> Обновления</td>
+                <td>Сайт</td>
+                <td>Автоматически</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Технические требования -->
+    <div class="section">
+        <h2>🔧 Технические требования</h2>
+        <table>
+            <tr><td>🖥️ Windows</td><td>7 / 10 / 11</td></tr>
+            <tr><td>⚡ PowerShell</td><td>3.0 и выше</td></tr>
+            <tr><td>📧 Почта</td><td>Reg.ru, Gmail, Mail.ru, Яндекс</td></tr>
+            <tr><td>🌐 Интернет</td><td>Стабильное соединение</td></tr>
+            <tr><td>⏱ Установка</td><td>5 минут на АЗС</td></tr>
+        </table>
+    </div>
+
+    <!-- Надёжность -->
+    <div class="section">
+        <h2>🛡️ Защита от сбоев</h2>
+        <table>
+            <tr><td>🔌 Нет интернета</td><td>Файл в очереди, автоотправка</td></tr>
+            <tr><td>⚡ Отключение света</td><td>Автозапуск при загрузке</td></tr>
+            <tr><td>💾 Сбой обновления</td><td>Backup + проверка</td></tr>
+            <tr><td>📧 Ошибка почты</td><td>Повтор без потери данных</td></tr>
+        </table>
+    </div>
+
+    <!-- Контакты -->
+    <div class="section" style="text-align: center;">
+        <h2>📞 Контакты</h2>
+        <h3>ASP34 SOFT</h3>
+        <p>📧 [email] | 📱 [телефон]</p>
+        <br>
+        <p>🌐 <a href="https://adminvtk34.github.io/azs-updates/">Сервер обновлений</a></p>
+    </div>
+
+    <div class="footer">
+        <p>(c) ASP34 SOFT 2026 | Все права защищены</p>
+        <p>Готово к внедрению ✅</p>
+    </div>
+
+</body>
+</html>
