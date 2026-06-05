@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASP34 Report System v2.0 — Презентация</title>
+    <style>
+        :root {
+            --dark: #1a1a2e;
+            --blue: #16213e;
+            --accent: #e94560;
+            --gold: #f5c518;
+            --white: #ffffff;
+            --gray: #f0f0f0;
+            --text: #333333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: #f5f5f5;
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        /* ========== HERO ========== */
+        .hero {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        .hero .subtitle {
+            font-size: 22px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        .hero .version {
+            display: inline-block;
+            background: var(--accent);
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 16px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .hero .company {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-top: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* ========== SECTIONS ========== */
+        .section {
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .section-dark {
+            background: var(--dark);
+            color: white;
+            max-width: 100%;
+            border-radius: 0;
+        }
+        .section-accent {
+            background: linear-gradient(135deg, #e94560, #c23152);
+            color: white;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 30px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent);
+            display: inline-block;
+        }
+        .section-dark h2 {
+            border-bottom-color: var(--gold);
+            color: white;
+        }
+        .section-accent h2 {
+            border-bottom-color: white;
+            color: white;
+        }
+
+        .section h3 {
+            font-size: 20px;
+            color: var(--blue);
+            margin: 25px 0 15px;
+        }
+        .section-dark h3 { color: var(--gold); }
+
+        /* ========== GRID ========== */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        /* ========== CARDS ========== */
+        .card {
+            background: var(--gray);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-3px); }
+        .card .icon { font-size: 36px; margin-bottom: 10px; }
+        .card h4 { margin-bottom: 8px; color: var(--dark); }
+        .card p { font-size: 14px; color: #666; }
+
+        .card-stat {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .card-stat .big {
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--accent);
+        }
+        .card-stat .label {
+            font-size: 14px;
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* ========== TABLES ========== */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 14px;
+            text-align: left;
+        }
+        th {
+            background: var(--dark);
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) { background: #f9f9f9; }
+        tr:hover { background: #eef; }
+
+        /* ========== FLOW ========== */
+        .flow {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 25px;
+            background: var(--dark);
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+        .flow-box {
+            background: white;
+            border: 2px solid var(--accent);
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+        }
+        .flow-arrow {
+            font-size: 24px;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* ========== BADGES ========== */
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 2px;
+        }
+        .badge-green { background: #4CAF50; color: white; }
+        .badge-blue { background: #2196F3; color: white; }
+        .badge-red { background: #e94560; color: white; }
+        .badge-gold { background: #f5c518; color: #333; }
+
+        /* ========== LOG BLOCK ========== */
+        .log-block {
+            background: #1e1e1e;
+            color: #0f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            line-height: 1.5;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        /* ========== SCHEME ========== */
+        .scheme-box {
+            background: var(--dark);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.8;
+            text-align: center;
+            overflow-x: auto;
+        }
+
+        /* ========== BUTTON ========== */
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+            margin: 10px;
+        }
+        .btn:hover {
+            background: #c23152;
+            transform: scale(1.05);
+        }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+        .btn-outline:hover { background: white; color: var(--dark); }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 40px;
+            font-size: 14px;
+        }
+        .footer a { color: var(--gold); text-decoration: none; }
+
+        /* ========== PRINT ========== */
+        @media print {
+            body { background: white; }
+            .section { box-shadow: none; break-inside: avoid; }
+            .hero { background: var(--dark) !important; -webkit-print-color-adjust: exact; }
+        }
+
+        /* ========== MOBILE ========== */
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 28px; }
+            .section { padding: 20px; margin: 10px; }
+            .flow { flex-direction: column; }
+            .flow-arrow { transform: rotate(90deg); }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== HERO ========== -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>🛢️ ASP34 Report System</h1>
+        <p class="subtitle">Автоматическая система управления отчётами АЗС</p>
+        <div class="version">v2.0 — Июнь 2026</div>
+        <p class="company">ASP34 SOFT © 2026</p>
+    </div>
+</div>
+
+<!-- ========== О ПРОДУКТЕ ========== -->
+<div class="section">
+    <h2>🎯 О продукте</h2>
+    <p style="font-size:18px; margin-bottom:20px;">
+        ASP34 Report System — это готовое решение для автоматизации сбора и обработки ежедневных XML-отчётов 
+        с автозаправочных станций. Система работает полностью автономно, не требует участия оператора и 
+        самостоятельно обновляется.
+    </p>
+    <div class="grid-4">
+        <div class="card-stat">
+            <div class="big">5 мин</div>
+            <div class="label">Установка на АЗС</div>
+        </div>
+        <div class="card-stat">
+            <div class="big">0</div>
+            <div class="label">Участие оператора</div>
+        </div>
+        <div class="card-stat">
+            <div class="big">1 ночь</div>
+            <div class="label">Обновление всех АЗС</div>
+        </div>
+        <div class="card-stat">
+            <div class="big">360+</div>
+            <div class="label">Отчётов в месяц</div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== СХЕМА ========== -->
+<div class="section">
+    <h2>🔄 Схема системы</h2>
+    <div class="scheme-box">
+        🤖 АЗС №1 ──┐<br>
+        🤖 АЗС №2 ──┤<br>
+        🤖 АЗС №3 ──┼──→ 📧 Почта ──→ 📥 Сервер ──┬──→ 📁 Папки АЗС<br>
+        🤖 АЗС №4 ──┤                              │<br>
+        🤖 АЗС №N ──┘                              └──→ 📊 Сводка руководству
+    </div>
+</div>
+
+<!-- ========== КАК РАБОТАЕТ ========== -->
+<div class="section">
+    <h2>⚙️ Как это работает</h2>
+    
+    <h3>🤖 Робот на АЗС (утро 07:30-09:30):</h3>
+    <div class="flow">
+        <div class="flow-box">⚙️ TopazAZS</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">📄 XML файл</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">🔍 Робот находит</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">✏️ Переименовывает</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">📧 Отправляет</div>
+    </div>
+
+    <h3>📥 Загрузчик на сервере (круглосуточно):</h3>
+    <div class="flow">
+        <div class="flow-box">📧 Почта</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">📥 Скачивает</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">📁 Сортирует</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-box">📊 Сводка</div>
+    </div>
+</div>
+
+<!-- ========== ВОЗМОЖНОСТИ ========== -->
+<div class="section">
+    <h2>⭐ Ключевые возможности</h2>
+    <div class="grid-2">
+        <div class="card">
+            <div class="icon">🤖</div>
+            <h4>Полный автомат</h4>
+            <p>Отправка без оператора. 3 режима работы. Защита от сбоев.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🔄</div>
+            <h4>Автообновление</h4>
+            <p>Роботы обновляются сами ночью. Вы получаете уведомление.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📊</div>
+            <h4>Ежедневная сводка</h4>
+            <p>В 09:40 отчёт: кто прислал, кто нет. Тревога при пропусках.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📁</div>
+            <h4>Автосортировка</h4>
+            <p>Отчёты раскладываются по папкам АЗС автоматически.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🛡️</div>
+            <h4>Защита от потерь</h4>
+            <p>Нет интернета — файл в очереди. Отправится когда появится.</p>
+        </div>
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h4>5 минут на АЗС</h4>
+            <p>Установка с флешки. Не нужен ИТ-специалист.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ========== ПРЕИМУЩЕСТВА ========== -->
+<div class="section">
+    <h2>📊 Преимущества</h2>
+    <table>
+        <tr>
+            <th>Критерий</th>
+            <th>Без системы</th>
+            <th>С ASP34</th>
+        </tr>
+        <tr>
+            <td>Участие оператора</td>
+            <td>❌ Обязательно</td>
+            <td><span class="badge badge-green">✅ Нет</span></td>
+        </tr>
+        <tr>
+            <td>Время на отправку</td>
+            <td>10-15 мин/день</td>
+            <td><span class="badge badge-green">0 минут</span></td>
+        </tr>
+        <tr>
+            <td>Пропуск отчёта</td>
+            <td>Возможен</td>
+            <td><span class="badge badge-green">Исключён</span></td>
+        </tr>
+        <tr>
+            <td>Установка на АЗС</td>
+            <td>Часы</td>
+            <td><span class="badge badge-green">5 минут</span></td>
+        </tr>
+        <tr>
+            <td>Обновление всех АЗС</td>
+            <td>Выезд (1-2 дня)</td>
+            <td><span class="badge badge-green">Автоматически</span></td>
+        </tr>
+        <tr>
+            <td>Контроль отправки</td>
+            <td>Отсутствует</td>
+            <td><span class="badge badge-green">Логи + сводка</span></td>
+        </tr>
+    </table>
+</div>
+
+<!-- ========== ЭКОНОМИКА ========== -->
+<div class="section section-accent">
+    <h2 style="border-color:white">💰 Экономический эффект</h2>
+    <div class="grid-2">
+        <div class="card-stat" style="background:rgba(255,255,255,0.2)">
+            <div class="big" style="color:white">50 ч/мес</div>
+            <div class="label" style="color:rgba(255,255,255,0.8)">Экономия для 10 АЗС</div>
+        </div>
+        <div class="card-stat" style="background:rgba(255,255,255,0.2)">
+            <div class="big" style="color:white">1-2 мес</div>
+            <div class="label" style="color:rgba(255,255,255,0.8)">Окупаемость</div>
+        </div>
+    </div>
+    <p style="margin-top:20px; font-size:16px;">
+        Экономия оператора: 10 мин × 30 дней × 10 АЗС = <strong>50 часов/мес</strong><br>
+        Сокращение выездов на АЗС: <strong>на 90%</strong>
+    </p>
+</div>
+
+<!-- ========== ПРИМЕРЫ ========== -->
+<div class="section">
+    <h2>📸 Примеры работы</h2>
+    
+    <h3>Логи робота:</h3>
+    <div class="log-block">
+[08:15:30] AZS MAIL ROBOT v3.2 STARTED<br>
+[08:17:15] NEW: Found 1 new file<br>
+[08:17:15] RENAME: SesDataExport → AZS_Shaiba_26.06.05_08-15-30.xml<br>
+[08:17:20] SUCCESS: Email sent!<br>
+[08:17:20] ARCHIVE: OK
+    </div>
+
+    <h3>Сводка руководству (09:40):</h3>
+    <div class="log-block">
+📊 Сводка отчётов за 05.06.2026<br><br>
+✅ АЗС Шайба — 1 файл (08:15)<br>
+✅ АЗС Гумрак — 1 файл (08:20)<br>
+❌ АЗС Рогачик — НЕТ ОТЧЁТА!<br>
+⚠️ ПРОБЛЕМНЫЕ АЗС: АЗС Новый Рогачик
+    </div>
+</div>
+
+<!-- ========== НАДЁЖНОСТЬ ========== -->
+<div class="section">
+    <h2>🛡️ Защита от сбоев</h2>
+    <table>
+        <tr><th>Ситуация</th><th>Решение</th></tr>
+        <tr><td>🔌 Нет интернета</td><td>Файл в очереди, автоотправка</td></tr>
+        <tr><td>⚡ Отключение света</td><td>Автозапуск при загрузке Windows</td></tr>
+        <tr><td>💾 Сбой обновления</td><td>Backup + проверка SHA256</td></tr>
+        <tr><td>📧 Ошибка почты</td><td>Повтор без потери данных</td></tr>
+        <tr><td>🖥️ Поломка ПК</td><td>Установка на новый за 5 минут</td></tr>
+    </table>
+</div>
+
+<!-- ========== FAQ ========== -->
+<div class="section">
+    <h2>❓ Частые вопросы</h2>
+    <table>
+        <tr><td><strong>Сколько АЗС поддерживается?</strong></td><td>Неограниченно. 100+ без проблем.</td></tr>
+        <tr><td><strong>Нужно ли обновлять вручную?</strong></td><td>Нет. Роботы обновляются сами ночью.</td></tr>
+        <tr><td><strong>Что если пропал интернет?</strong></td><td>Файл сохранится, отправится когда интернет появится.</td></tr>
+        <tr><td><strong>Можно ли другую почту?</strong></td><td>Да. Gmail, Mail.ru, Яндекс, Reg.ru, любой SMTP.</td></tr>
+        <tr><td><strong>Как добавить новую АЗС?</strong></td><td>3 файла на флешку, 5 минут, готово.</td></tr>
+        <tr><td><strong>Безопасно ли это?</strong></td><td>Пароли только локально. Код открыт, данные защищены.</td></tr>
+    </table>
+</div>
+
+<!-- ========== CTA ========== -->
+<div class="section section-accent" style="text-align:center;">
+    <h2 style="border-color:white">🚀 Готовы автоматизировать АЗС?</h2>
+    <p style="font-size:18px; margin:20px 0;">
+        Установка за 5 минут. Окупаемость 1-2 месяца. Техподдержка 24/7.
+    </p>
+    <a href="mailto:your@email.com" class="btn">📧 Связаться с нами</a>
+    <a href="https://adminvtk34.github.io/azs-updates/" class="btn btn-outline">🌐 Сайт системы</a>
+</div>
+
+<!-- ========== FOOTER ========== -->
+<div class="footer">
+    <p><strong>ASP34 SOFT © 2026</strong></p>
+    <p>
+        <a href="https://adminvtk34.github.io/azs-updates/">Сайт</a> | 
+        <a href="https://adminvtk34.github.io/azs-updates/changelog.html">История версий</a> |
+        <a href="mailto:your@email.com">Email</a>
+    </p>
+    <p style="margin-top:15px; opacity:0.7;">Готовое решение для автоматизации АЗС</p>
+</div>
+
+</body>
+</html>
