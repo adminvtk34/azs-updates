@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASP34 Report System v2.0 — Презентация</title>
+    <title>ASP34 Report System v3.3 — Презентация</title>
     <style>
         :root {
             --dark: #1a1a2e;
@@ -24,7 +24,6 @@
             line-height: 1.6;
         }
 
-        /* ========== HERO ========== */
         .hero {
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             color: white;
@@ -43,21 +42,9 @@
             background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
             background-size: 30px 30px;
         }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 900;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-        .hero .subtitle {
-            font-size: 22px;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero h1 { font-size: 48px; font-weight: 900; margin-bottom: 10px; letter-spacing: 2px; }
+        .hero .subtitle { font-size: 22px; opacity: 0.9; margin-bottom: 5px; }
         .hero .version {
             display: inline-block;
             background: var(--accent);
@@ -75,7 +62,6 @@
             text-transform: uppercase;
         }
 
-        /* ========== SECTIONS ========== */
         .section {
             max-width: 1000px;
             margin: 30px auto;
@@ -103,40 +89,15 @@
             border-bottom: 3px solid var(--accent);
             display: inline-block;
         }
-        .section-dark h2 {
-            border-bottom-color: var(--gold);
-            color: white;
-        }
-        .section-accent h2 {
-            border-bottom-color: white;
-            color: white;
-        }
-
-        .section h3 {
-            font-size: 20px;
-            color: var(--blue);
-            margin: 25px 0 15px;
-        }
+        .section-dark h2 { border-bottom-color: var(--gold); color: white; }
+        .section-accent h2 { border-bottom-color: white; color: white; }
+        .section h3 { font-size: 20px; color: var(--blue); margin: 25px 0 15px; }
         .section-dark h3 { color: var(--gold); }
 
-        /* ========== GRID ========== */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-        }
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .grid-4 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
 
-        /* ========== CARDS ========== */
         .card {
             background: var(--gray);
             padding: 25px;
@@ -156,37 +117,19 @@
             text-align: center;
             box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
-        .card-stat .big {
-            font-size: 42px;
-            font-weight: 900;
-            color: var(--accent);
-        }
-        .card-stat .label {
-            font-size: 14px;
-            color: #888;
-            margin-top: 5px;
-        }
+        .card-stat .big { font-size: 42px; font-weight: 900; color: var(--accent); }
+        .card-stat .label { font-size: 14px; color: #888; margin-top: 5px; }
 
-        /* ========== TABLES ========== */
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 15px 0;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 14px;
-            text-align: left;
-        }
-        th {
-            background: var(--dark);
-            color: white;
-            font-weight: bold;
-        }
+        th, td { border: 1px solid #ddd; padding: 14px; text-align: left; }
+        th { background: var(--dark); color: white; font-weight: bold; }
         tr:nth-child(even) { background: #f9f9f9; }
         tr:hover { background: #eef; }
 
-        /* ========== FLOW ========== */
         .flow {
             display: flex;
             justify-content: center;
@@ -207,13 +150,8 @@
             font-size: 14px;
             text-align: center;
         }
-        .flow-arrow {
-            font-size: 24px;
-            color: var(--gold);
-            font-weight: bold;
-        }
+        .flow-arrow { font-size: 24px; color: var(--gold); font-weight: bold; }
 
-        /* ========== BADGES ========== */
         .badge {
             display: inline-block;
             padding: 5px 12px;
@@ -227,7 +165,6 @@
         .badge-red { background: #e94560; color: white; }
         .badge-gold { background: #f5c518; color: #333; }
 
-        /* ========== LOG BLOCK ========== */
         .log-block {
             background: #1e1e1e;
             color: #0f0;
@@ -240,20 +177,6 @@
             margin: 10px 0;
         }
 
-        /* ========== SCHEME ========== */
-        .scheme-box {
-            background: var(--dark);
-            color: white;
-            padding: 30px;
-            border-radius: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            line-height: 1.8;
-            text-align: center;
-            overflow-x: auto;
-        }
-
-        /* ========== BUTTON ========== */
         .btn {
             display: inline-block;
             background: var(--accent);
@@ -266,17 +189,10 @@
             transition: 0.3s;
             margin: 10px;
         }
-        .btn:hover {
-            background: #c23152;
-            transform: scale(1.05);
-        }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-        }
+        .btn:hover { background: #c23152; transform: scale(1.05); }
+        .btn-outline { background: transparent; border: 2px solid white; }
         .btn-outline:hover { background: white; color: var(--dark); }
 
-        /* ========== FOOTER ========== */
         .footer {
             background: var(--dark);
             color: white;
@@ -286,14 +202,12 @@
         }
         .footer a { color: var(--gold); text-decoration: none; }
 
-        /* ========== PRINT ========== */
         @media print {
             body { background: white; }
             .section { box-shadow: none; break-inside: avoid; }
             .hero { background: var(--dark) !important; -webkit-print-color-adjust: exact; }
         }
 
-        /* ========== MOBILE ========== */
         @media (max-width: 600px) {
             .hero h1 { font-size: 28px; }
             .section { padding: 20px; margin: 10px; }
@@ -309,7 +223,7 @@
     <div class="hero-content">
         <h1>🛢️ ASP34 Report System</h1>
         <p class="subtitle">Автоматическая система управления отчётами АЗС</p>
-        <div class="version">v2.0 — Июнь 2026</div>
+        <div class="version">v3.3 — Июнь 2026</div>
         <p class="company">ASP34 SOFT © 2026</p>
     </div>
 </div>
@@ -318,9 +232,9 @@
 <div class="section">
     <h2>🎯 О продукте</h2>
     <p style="font-size:18px; margin-bottom:20px;">
-        ASP34 Report System — это готовое решение для автоматизации сбора и обработки ежедневных XML-отчётов 
-        с автозаправочных станций. Система работает полностью автономно, не требует участия оператора и 
-        самостоятельно обновляется.
+        ASP34 Report System — готовое решение для автоматизации сбора и обработки ежедневных XML-отчётов 
+        с автозаправочных станций. Система работает полностью автономно, не требует участия оператора, 
+        защищена от зависаний и самостоятельно обновляется через интернет.
     </p>
     <div class="grid-4">
         <div class="card-stat">
@@ -332,7 +246,7 @@
             <div class="label">Участие оператора</div>
         </div>
         <div class="card-stat">
-            <div class="big">1 ночь</div>
+            <div class="big">1 день</div>
             <div class="label">Обновление всех АЗС</div>
         </div>
         <div class="card-stat">
@@ -401,7 +315,7 @@
 <div class="section">
     <h2>⚙️ Как это работает</h2>
     
-    <h3>🤖 Робот на АЗС (утро 07:30-09:30):</h3>
+    <h3>🤖 Робот на АЗС:</h3>
     <div class="flow">
         <div class="flow-box">⚙️ TopazAZS</div>
         <div class="flow-arrow">→</div>
@@ -409,7 +323,7 @@
         <div class="flow-arrow">→</div>
         <div class="flow-box">🔍 Робот находит</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-box">✏️ Переименовывает</div>
+        <div class="flow-box">💾 Копия в Отчеты</div>
         <div class="flow-arrow">→</div>
         <div class="flow-box">📧 Отправляет</div>
     </div>
@@ -418,11 +332,11 @@
     <div class="flow">
         <div class="flow-box">📧 Почта</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-box">📥 Скачивает</div>
+        <div class="flow-box">📥 Скачивает XML</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-box">📁 Сортирует</div>
+        <div class="flow-box">📁 Сортирует по АЗС</div>
         <div class="flow-arrow">→</div>
-        <div class="flow-box">📊 Сводка</div>
+        <div class="flow-box">📊 Ежедневная сводка</div>
     </div>
 </div>
 
@@ -437,13 +351,23 @@
         </div>
         <div class="card">
             <div class="icon">🔄</div>
-            <h4>Автообновление</h4>
-            <p>Роботы обновляются сами ночью. Вы получаете уведомление.</p>
+            <h4>Автообновление днём</h4>
+            <p>Роботы обновляются сами в 15:00, когда точно есть интернет. Вы получаете уведомление.</p>
+        </div>
+        <div class="card">
+            <div class="icon">💾</div>
+            <h4>Мгновенное сохранение</h4>
+            <p>XML сразу копируется в Отчёты до отправки. Данные не теряются даже при сбое почты.</p>
+        </div>
+        <div class="card">
+            <div class="icon">⏱️</div>
+            <h4>Сторожевой таймер</h4>
+            <p>Автоопределение зависания. Самостоятельный перезапуск без участия оператора.</p>
         </div>
         <div class="card">
             <div class="icon">📊</div>
             <h4>Ежедневная сводка</h4>
-            <p>В 09:40 отчёт: кто прислал, кто нет. Тревога при пропусках.</p>
+            <p>Отчёт: кто прислал, кто нет. Тревога при пропусках.</p>
         </div>
         <div class="card">
             <div class="icon">📁</div>
@@ -456,9 +380,19 @@
             <p>Нет интернета — файл в очереди. Отправится когда появится.</p>
         </div>
         <div class="card">
+            <div class="icon">🔐</div>
+            <h4>Проверка SHA256</h4>
+            <p>Контрольная сумма при обновлении. Исключена подмена скрипта.</p>
+        </div>
+        <div class="card">
             <div class="icon">⚡</div>
             <h4>5 минут на АЗС</h4>
             <p>Установка с флешки. Не нужен ИТ-специалист.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📦</div>
+            <h4>Backup перед обновлением</h4>
+            <p>Старая версия сохраняется. Всегда можно откатиться.</p>
         </div>
     </div>
 </div>
@@ -470,7 +404,7 @@
         <tr>
             <th>Критерий</th>
             <th>Без системы</th>
-            <th>С ASP34</th>
+            <th>С ASP34 v3.3</th>
         </tr>
         <tr>
             <td>Участие оператора</td>
@@ -483,9 +417,19 @@
             <td><span class="badge badge-green">0 минут</span></td>
         </tr>
         <tr>
+            <td>Сохранность данных</td>
+            <td>Под угрозой</td>
+            <td><span class="badge badge-green">Мгновенная копия</span></td>
+        </tr>
+        <tr>
             <td>Пропуск отчёта</td>
             <td>Возможен</td>
             <td><span class="badge badge-green">Исключён</span></td>
+        </tr>
+        <tr>
+            <td>Зависание скрипта</td>
+            <td>Требует перезапуска</td>
+            <td><span class="badge badge-green">Автоперезапуск</span></td>
         </tr>
         <tr>
             <td>Установка на АЗС</td>
@@ -501,6 +445,11 @@
             <td>Контроль отправки</td>
             <td>Отсутствует</td>
             <td><span class="badge badge-green">Логи + сводка</span></td>
+        </tr>
+        <tr>
+            <td>Безопасность обновлений</td>
+            <td>Нет</td>
+            <td><span class="badge badge-green">SHA256 + Backup</span></td>
         </tr>
     </table>
 </div>
@@ -520,7 +469,8 @@
     </div>
     <p style="margin-top:20px; font-size:16px;">
         Экономия оператора: 10 мин × 30 дней × 10 АЗС = <strong>50 часов/мес</strong><br>
-        Сокращение выездов на АЗС: <strong>на 90%</strong>
+        Сокращение выездов на АЗС для обновлений: <strong>на 100%</strong><br>
+        Исключение потерь данных при сбоях: <strong>мгновенное копирование в Отчёты</strong>
     </p>
 </div>
 
@@ -528,35 +478,53 @@
 <div class="section">
     <h2>📸 Примеры работы</h2>
     
-    <h3>Логи робота:</h3>
+    <h3>Логи робота v3.3:</h3>
     <div class="log-block">
-[08:15:30] AZS MAIL ROBOT v3.2 STARTED<br>
-[08:17:15] NEW: Found 1 new file<br>
-[08:17:15] RENAME: SesDataExport → AZS_Shaiba_26.06.05_08-15-30.xml<br>
-[08:17:20] SUCCESS: Email sent!<br>
-[08:17:20] ARCHIVE: OK
+[08:15:30] ROBOT CORE v3.3 STARTED<br>
+[08:15:30] AZS: АЗС Шайба (AZS_Shaiba)<br>
+[08:15:30] Update: daily at 15:00<br>
+[08:17:15] NEW: SesDataExport_26.06.22_08-15-30.xml -> AZS_Shaiba_26.06.22_08-15-30.xml<br>
+[08:17:15] REPORT: saved to Отчеты<br>
+[08:17:15] BUFFER: copied to НаОтправку<br>
+[08:17:20] MAIL: Sending AZS_Shaiba_26.06.22_08-15-30.xml...<br>
+[08:17:22] SUCCESS: sent<br>
+[08:17:22] SENT: removed from Outbox
     </div>
 
     <h3>Сводка руководству (09:40):</h3>
     <div class="log-block">
-📊 Сводка отчётов за 05.06.2026<br><br>
+📊 Сводка отчётов за 22.06.2026<br><br>
 ✅ АЗС Шайба — 1 файл (08:15)<br>
 ✅ АЗС Гумрак — 1 файл (08:20)<br>
+✅ АЗС Жирновск — 1 файл (08:22)<br>
 ❌ АЗС Рогачик — НЕТ ОТЧЁТА!<br>
 ⚠️ ПРОБЛЕМНЫЕ АЗС: АЗС Новый Рогачик
+    </div>
+
+    <h3>Уведомление об обновлении:</h3>
+    <div class="log-block">
+[15:00:05] UPDATE: Checking...<br>
+[15:00:07] UPDATE: Server: v3.4, Current: v3.3<br>
+[15:00:07] UPDATE: New version v3.4 available!<br>
+[15:00:08] UPDATE: Downloading...<br>
+[15:00:10] UPDATE: Checksum OK<br>
+[15:00:10] UPDATE: Backup saved -> robot_core_v3.3.ps1.v3.3.backup<br>
+[15:00:10] UPDATE: Script updated to v3.4!<br>
+[15:00:12] NOTIFY: Sent to admin
     </div>
 </div>
 
 <!-- ========== НАДЁЖНОСТЬ ========== -->
 <div class="section">
-    <h2>🛡️ Защита от сбоев</h2>
+    <h2>🛡️ Защита от сбоев (новое в v3.3)</h2>
     <table>
         <tr><th>Ситуация</th><th>Решение</th></tr>
-        <tr><td>🔌 Нет интернета</td><td>Файл в очереди, автоотправка</td></tr>
+        <tr><td>🔌 Нет интернета</td><td>Файл в очереди, автоотправка при появлении сети</td></tr>
         <tr><td>⚡ Отключение света</td><td>Автозапуск при загрузке Windows</td></tr>
-        <tr><td>💾 Сбой обновления</td><td>Backup + проверка SHA256</td></tr>
-        <tr><td>📧 Ошибка почты</td><td>Повтор без потери данных</td></tr>
-        <tr><td>🖥️ Поломка ПК</td><td>Установка на новый за 5 минут</td></tr>
+        <tr><td>💾 Сбой обновления</td><td>Backup старой версии + проверка SHA256</td></tr>
+        <tr><td>📧 Ошибка почты</td><td>Повтор без потери данных (файл уже в Отчетах)</td></tr>
+        <tr><td>⏱️ Зависание скрипта</td><td>Сторожевой таймер → автоперезапуск</td></tr>
+        <tr><td>🖥️ Поломка ПК</td><td>Установка на новый за 5 минут с флешки</td></tr>
     </table>
 </div>
 
@@ -565,11 +533,50 @@
     <h2>❓ Частые вопросы</h2>
     <table>
         <tr><td><strong>Сколько АЗС поддерживается?</strong></td><td>Неограниченно. 100+ без проблем.</td></tr>
-        <tr><td><strong>Нужно ли обновлять вручную?</strong></td><td>Нет. Роботы обновляются сами ночью.</td></tr>
-        <tr><td><strong>Что если пропал интернет?</strong></td><td>Файл сохранится, отправится когда интернет появится.</td></tr>
-        <tr><td><strong>Можно ли другую почту?</strong></td><td>Да. Gmail, Mail.ru, Яндекс, Reg.ru, любой SMTP.</td></tr>
+        <tr><td><strong>Нужно ли обновлять вручную?</strong></td><td>Нет. Роботы обновляются сами в 15:00, когда есть интернет.</td></tr>
+        <tr><td><strong>Что если пропал интернет?</strong></td><td>Файл сохраняется в Отчеты сразу. Отправится когда интернет появится.</td></tr>
+        <tr><td><strong>Можно ли другую почту?</strong></td><td>Да. Gmail, Mail.ru, Яндекс, Reg.ru — любой SMTP.</td></tr>
         <tr><td><strong>Как добавить новую АЗС?</strong></td><td>3 файла на флешку, 5 минут, готово.</td></tr>
-        <tr><td><strong>Безопасно ли это?</strong></td><td>Пароли только локально. Код открыт, данные защищены.</td></tr>
+        <tr><td><strong>Безопасно ли это?</strong></td><td>Пароли только локально в config_azs.json. Код открыт, данные защищены.</td></tr>
+        <tr><td><strong>Что нового в v3.3?</strong></td><td>Мгновенное сохранение в Отчеты, сторожевой таймер, обновление в 15:00, проверка SHA256.</td></tr>
+    </table>
+</div>
+
+<!-- ========== ИСТОРИЯ ВЕРСИЙ ========== -->
+<div class="section">
+    <h2>📜 История версий</h2>
+    <table>
+        <tr><th>Версия</th><th>Дата</th><th>Изменения</th></tr>
+        <tr>
+            <td><span class="badge badge-red">v3.3</span></td>
+            <td>22.06.2026</td>
+            <td>Мгновенное сохранение в Отчеты, сторожевой таймер, обновление в 15:00, проверка SHA256, асинхронная отправка с тайм-аутом</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">v3.2</span></td>
+            <td>10.06.2026</td>
+            <td>Исправлены утечки памяти, тайм-аут SMTP, улучшена обработка заблокированных файлов</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">v3.1</span></td>
+            <td>03.06.2026</td>
+            <td>Автообновление каждую ночь, backup перед обновлением, сохранение даты из имени файла</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-blue">v3.0</span></td>
+            <td>03.06.2026</td>
+            <td>Автообновление с GitHub Pages, настройки в config_azs.json, проверка SHA256, код и настройки разделены</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-gold">v2.0</span></td>
+            <td>15.05.2026</td>
+            <td>Умный режим работы, защита после перезагрузки, обработка нескольких файлов, автоочистка</td>
+        </tr>
+        <tr>
+            <td><span class="badge badge-green">v1.0</span></td>
+            <td>01.05.2026</td>
+            <td>Мониторинг папки Export, отправка по email через SMTP, очередь отправки, логирование</td>
+        </tr>
     </table>
 </div>
 
@@ -577,7 +584,8 @@
 <div class="section section-accent" style="text-align:center;">
     <h2 style="border-color:white">🚀 Готовы автоматизировать АЗС?</h2>
     <p style="font-size:18px; margin:20px 0;">
-        Установка за 5 минут. Окупаемость 1-2 месяца. Техподдержка 24/7.
+        Установка за 5 минут. Окупаемость 1-2 месяца. Техподдержка 24/7.<br>
+        <strong>v3.3 уже доступна для обновления.</strong>
     </p>
     <a href="mailto:your@email.com" class="btn">📧 Связаться с нами</a>
     <a href="https://adminvtk34.github.io/azs-updates/" class="btn btn-outline">🌐 Сайт системы</a>
@@ -586,9 +594,11 @@
 <!-- ========== FOOTER ========== -->
 <div class="footer">
     <p><strong>ASP34 SOFT © 2026</strong></p>
+    <p>ASP34 Report System v3.3 — Июнь 2026</p>
     <p>
         <a href="https://adminvtk34.github.io/azs-updates/">Сайт</a> | 
         <a href="https://adminvtk34.github.io/azs-updates/changelog.html">История версий</a> |
+        <a href="https://adminvtk34.github.io/azs-updates/versions.json">versions.json</a> |
         <a href="mailto:your@email.com">Email</a>
     </p>
     <p style="margin-top:15px; opacity:0.7;">Готовое решение для автоматизации АЗС</p>
